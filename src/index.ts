@@ -8,6 +8,12 @@ import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
 import { buildSchema } from 'graphql';
 import { makeExecutableSchema } from 'graphql-tools';
+import mongoose from 'mongoose';
+
+mongoose.connect('mongodb://localhost:27017/testando');
+const User: any = mongoose.model('User', new mongoose.Schema({
+    name: String
+}))
 
 const msgs: Array<String> = [];
 
@@ -65,6 +71,7 @@ const resolvers = {
     Mutation: {
         sendMessage: (_: any, helloData: any) => {
             msgs.push(Math.floor(Math.random() * 10).toString())
+        
             return msgs;
         },
     }
