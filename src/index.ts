@@ -8,8 +8,9 @@ import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
 import { buildSchema } from 'graphql';
 import { makeExecutableSchema } from 'graphql-tools';
-import mongoose from 'mongoose';
+import mongoose, { mongo } from 'mongoose';
 
+mongoose.set('strictQuery', false)
 mongoose.connect('mongodb://localhost:27017/testando');
 const User: any = mongoose.model('User', new mongoose.Schema({
     name: String
