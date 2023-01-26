@@ -7,8 +7,11 @@ export function getLengthMessage(msg: string): number {
 import express from 'express';
 // import { buildSchema } from 'graphql';
 // import mongoose, { mongo } from 'mongoose';
-import './database/connection';
 import routes from './routes';
+import dotenv from 'dotenv';
+import { getConnectionDB } from './database/connection';
+dotenv.config()
+getConnectionDB()
 
 // const msgs: Array<String> = [];
 

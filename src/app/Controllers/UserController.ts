@@ -1,29 +1,37 @@
-const msgs: Array<String> = [];
+import User from "../Models/User";
 
 const typeDefs: any = [`
+    type User {
+        _id: String,
+        name: String,
+    }
+
     type Query {
         hello: String,
-        getMessages: [String],
+        getUsers: [User],
     }
+
     type Mutation {
-        sendMessage(message: String) : [String]
+        createUser(name: String) : User
     }
 `];
-
+ 
 const resolvers = {
     Query: {
         hello: () => {
             return 'Hello world!';
         },
-        getMessages: () => {
-            return msgs;
+        getUsers: async () => {
+            const users = await User.find({})
+            console.log(users)
+            return users
         }
     },
     Mutation: {
-        sendMessage: (_: any, helloData: any) => {
-            msgs.push(Math.floor(Math.random() * 10).toString())
-            
-            return msgs;
+        createUser: async (_: any, { name }: any) => {
+            const user = await User.create({ name })
+            console.log(user)
+            return user;
         },
     }
 }

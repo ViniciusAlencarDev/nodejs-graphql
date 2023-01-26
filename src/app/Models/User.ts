@@ -1,9 +1,21 @@
 import mongoose from 'mongoose';
 
-const UseScheme = new mongoose.Schema({
-    name: String
-})
+class User {
 
-const User: any = mongoose.model('User', UseScheme)
+    private user;
 
-export default User
+    constructor() {
+        const UseScheme = new mongoose.Schema({
+            name: String
+        })
+        
+        this.user = mongoose.model('User', UseScheme)
+    }
+
+    getUser() {
+        return this.user
+    }
+
+}
+
+export default new User().getUser()
