@@ -12,10 +12,14 @@ class User {
         this.user = mongoose.model('User', UseScheme)
     }
 
-    getUser() {
-        return this.user
+    async getUsers() {
+        return this.user.find({});
+    }
+
+    async create(name: String) {
+        return this.user.create({ name })
     }
 
 }
 
-export default new User().getUser()
+export default new User()

@@ -22,14 +22,14 @@ const resolvers = {
             return 'Hello world!';
         },
         getUsers: async () => {
-            const users = await User.find({})
+            const users = await User.getUsers()
             console.log(users)
             return users
         }
     },
     Mutation: {
         createUser: async (_: any, { name }: any) => {
-            const user = await User.create({ name })
+            const user = await User.create(name)
             console.log(user)
             return user;
         },
