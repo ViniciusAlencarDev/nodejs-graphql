@@ -20,6 +20,10 @@ class User {
         return this.user.create({ name })
     }
 
+    async update(_id: String, name: String) {
+        return this.user.updateOne(_id, name)
+    }
+
 }
 
 export default new User()

@@ -13,6 +13,7 @@ const typeDefs: any = [`
 
     type Mutation {
         createUser(name: String) : User
+        updateUsers(_id: String, name: String) : User
     }
 `];
  
@@ -33,6 +34,11 @@ const resolvers = {
             console.log(user)
             return user;
         },
+        updateUsers: async (_: any, { _id, name }: any) => {
+            const user = await User.update(_id, name)
+            console.log(user)
+            return user;
+        }
     }
 }
 
