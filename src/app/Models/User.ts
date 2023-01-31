@@ -12,7 +12,7 @@ class User {
         this.user = mongoose.model('User', UseScheme)
     }
 
-    async getUsers() {
+    async getUsers(filters?: String) {
         return this.user.find({});
     }
 
