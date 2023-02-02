@@ -24,7 +24,7 @@ const resolvers = {
             return 'Hello world!';
         },
         getUsers: async (filters?: String) => {
-            const users = await User.getUsers()
+            const users = await User.getUsers(filters)
             console.log(users)
             return users
         }
