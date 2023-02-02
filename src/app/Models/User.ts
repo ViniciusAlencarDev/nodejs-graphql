@@ -24,6 +24,10 @@ class User {
         return this.user.updateOne(_id, name)
     }
 
+    async delete(_id: String) {
+        return this.user.deleteOne({ _id })
+    }
+
 }
 
 export default new User()

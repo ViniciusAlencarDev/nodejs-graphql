@@ -14,6 +14,7 @@ const typeDefs: any = [`
     type Mutation {
         createUser(name: String) : User
         updateUsers(_id: String, name: String) : User
+        deleteUser(_id): String
     }
 `];
  
@@ -38,6 +39,9 @@ const resolvers = {
             const user = await User.update(_id, name)
             console.log(user)
             return user;
+        },
+        deleteUser: async (_: any, { _id }: any) => {
+            await User.delete(_id) ? "Deleted" : "Error"
         }
     }
 }
