@@ -13,7 +13,7 @@ class User {
     }
 
     async getUsers(filters?: String) {
-        return this.user.find({}).where(filters);
+        return this.user.find({}).where(JSON.parse(filters));
     }
 
     async create(name: String) {
