@@ -12,8 +12,8 @@ class User {
         this.user = mongoose.model('User', UseScheme)
     }
 
-    async getUsers(filters?: String) {
-        return this.user.find({}).where(JSON.parse(filters));
+    async getUsers(filters?: string) {
+        return this.user.find({}).where(JSON.parse(filters || ''));
     }
 
     async create(name: String) {
