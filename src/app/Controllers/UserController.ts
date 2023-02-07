@@ -23,8 +23,8 @@ const resolvers = {
         hello: () => {
             return 'Hello world!';
         },
-        getUsers: async (filters?: String) => {
-            const users = await User.getUsers(filters)
+        getUsers: async (filters?: string) => {
+            const users = await User.getUsers(filters || '')
             console.log(users)
             return users
         }
