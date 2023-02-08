@@ -8,12 +8,12 @@ class User {
         const UseScheme = new mongoose.Schema({
             name: String
         })
-        
+
         this.user = mongoose.model('User', UseScheme)
     }
 
-    async getUsers(filters?: string) {
-        return this.user.find({}).where(JSON.parse(filters || ''));
+    async getUsers(limit: number, filters?: string) {
+        return this.user.find().where(JSON.parse(filters || '')).limit(limit);
     }
 
     async create(name: String) {
