@@ -12,8 +12,8 @@ class User {
         this.user = mongoose.model('User', UseScheme)
     }
 
-    async getUsers(limit: number, filters?: string) {
-        return this.user.find().where(JSON.parse(filters || '')).limit(limit);
+    async getUsers(limit: number, offset: number, filters?: string) {
+        return this.user.find().where(JSON.parse(filters || '')).skip(offset).limit(limit);
     }
 
     async create(name: String) {

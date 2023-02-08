@@ -8,7 +8,7 @@ const typeDefs: any = [`
 
     type Query {
         hello: String,
-        getUsers(limit: number, filters?: String): [User],
+        getUsers(limit: number, offset: number, filters?: String): [User],
     }
 
     type Mutation {
@@ -23,8 +23,8 @@ const resolvers = {
         hello: () => {
             return 'Hello world!';
         },
-        getUsers: async (limit: number, filters?: string) => {
-            const users = await User.getUsers(limit, filters || '')
+        getUsers: async (limit: number, offset: number, filters?: string) => {
+            const users = await User.getUsers(limit, offset, filters || '')
             console.log(users)
             return users
         }
