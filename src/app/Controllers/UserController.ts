@@ -25,8 +25,7 @@ const resolvers = {
         },
         getUsers: async (limit: number, offset: number, filters?: string) => {
             const users = await User.getUsers(limit, offset, filters || '')
-            console.log(users)
-            return users
+            return users.reverse()
         }
     },
     Mutation: {
