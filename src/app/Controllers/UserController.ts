@@ -31,12 +31,12 @@ const resolvers = {
     Mutation: {
         createUser: async (_: any, { name }: any) => {
             const user = await User.create(name)
-            console.log(user)
+            console.log('Created:', user)
             return user;
         },
         updateUsers: async (_: any, { _id, name }: any) => {
             const user = await User.update(_id, name)
-            console.log(user)
+            console.log('Updated', user)
             return user;
         },
         deleteUser: async (_: any, { _id }: any) => {
