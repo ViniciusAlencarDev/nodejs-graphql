@@ -13,8 +13,8 @@ class User {
     }
 
     async getUsers(limit: number, offset: number, filters?: string) {
-        const users = await this.user.find().where(JSON.parse(filters || '')).skip(offset).limit(limit);
-        return users.reverse()
+        const users = await (await this.user.find().where(JSON.parse(filters || '')).skip(offset).limit(limit)).reverse();
+        return users
     }
 
     async create(name: String) {
