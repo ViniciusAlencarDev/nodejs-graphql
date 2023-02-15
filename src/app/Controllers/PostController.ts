@@ -36,7 +36,7 @@ const resolvers = {
         },
         updatePost: async (_: any, { _id, name }: any) => {
             const posts = await Post.update(_id, name)
-            console.log('Updated', posts)
+            console.log('Updated:', posts)
             return posts;
         },
         deletePost: async (_: any, { _id }: any) => {
