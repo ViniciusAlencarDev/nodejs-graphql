@@ -6,7 +6,7 @@ class Post {
 
     constructor() {
         const UseScheme = new mongoose.Schema({
-            name: String
+            title: String
         })
 
         this.post = mongoose.model('Post', UseScheme)
@@ -17,12 +17,12 @@ class Post {
         return users
     }
 
-    async create(name: String) {
-        return this.post.create({ name })
+    async create(title: String) {
+        return this.post.create({ title })
     }
 
-    async update(_id: String, name: String) {
-        return this.post.updateOne(_id, name)
+    async update(_id: String, title: String) {
+        return this.post.updateOne(_id, title)
     }
 
     async delete(_id: String) {
